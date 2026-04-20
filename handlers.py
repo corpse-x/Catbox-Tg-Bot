@@ -123,9 +123,8 @@ async def process_file_upload(message: Message, bot: Bot, catbox_only: bool = Fa
 
             # Upload
             if catbox_only:
-                from uploader import upload_to_catbox
-                url = await upload_to_catbox(local_path, filename)
-                urls = {"catbox": url} if url else {}
+                from uploader import upload_catbox_only
+                urls = await upload_catbox_only(local_path, filename)
             else:
                 urls = await upload_file(local_path, filename)
 
